@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+*$py.class
+
+Frontend/node_modules
+
+Backend/PortfolioAPI/.venv
+
+.idea/
+.vscode/
+

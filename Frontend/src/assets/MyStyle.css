@@ -1,0 +1,35 @@
+.my-header-background{
+    background-image: url(./img/lenguaje-de-programación.jpg); 
+    background-size: cover;
+     backdrop-filter: blur(1px);
+     backdrop-filter:  blur(100px);
+     -webkit-backdrop-filter: blur(10px);
+}
+
+  .error-message {
+    color: red; 
+    font-weight: bold; 
+    font-size: 16px; 
+    margin-top: 5px;
+    
+}
+
+.my-color{
+  color: #16A085;
+}
+
+.masthead-avatar {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  transition: all 0.3s ease;
+}
+
+.avatar-container {
+  position: relative;
+}
+
+.avatar-container:hover .masthead-avatar {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+}

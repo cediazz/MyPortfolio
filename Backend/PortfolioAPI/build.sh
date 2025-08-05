@@ -1,8 +1,8 @@
 
 set -o errexit
 
-pip install -r requirements.txt
+uv pip install -r requirements.txt
 
-python manage.py collectstatic --no-input
+uv run manage.py collectstatic --no-input
 
-python manage.py migrate
+uv run manage.py migrate

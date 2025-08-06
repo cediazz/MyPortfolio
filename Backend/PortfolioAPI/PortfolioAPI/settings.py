@@ -61,6 +61,7 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     config('FRONTEND_HOST'),
+    config('DEPLOY_FRONTEND_HOST')
 ] 
 
 ROOT_URLCONF = 'PortfolioAPI.urls'

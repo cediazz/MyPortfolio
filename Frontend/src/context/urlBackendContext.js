@@ -13,8 +13,7 @@ export const UrlBackendProvider = ({ children }) => {
       const isDevelopment = process.env.NODE_ENV === 'development'
       const url = isDevelopment ? process.env.REACT_APP_BACKEND_HOST
         : process.env.REACT_APP_DEPLOY_BACKEND_HOST
-      //setURL(url)
-      setURL(process.env.REACT_APP_DEPLOY_BACKEND_HOST)
+      setURL(url)
     }
     catch (error) {
       console.log(error)

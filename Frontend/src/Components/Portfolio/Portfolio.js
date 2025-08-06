@@ -1,15 +1,17 @@
 import Project from "../PortfolioItems/Project/Project"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import axios from 'axios'
 import StarIcon from "../Icons/StarIcon"
+import { UrlBackendContext } from "../../context/urlBackendContext"
 
 function Portfolio() {
 
+  const { url } = useContext(UrlBackendContext)
   const [projects, setProjects] = useState([])
 
   const getProjects = async () => {
     try {
-      let response = await axios.get(`${process.env.REACT_APP_BACKEND_HOST}/projects/list-projects`)
+      let response = await axios.get(`${url}/projects/list-projects`)
       if (response.status === 200)
         setProjects(response.data)
     } catch (error) {

@@ -1,32 +1,36 @@
-import { createContext, useState,useEffect } from 'react'
+import { createContext, useState,useEffect, useContext } from 'react'
 import axios from 'axios'
 import Page404 from '../Components/Page404/Page404'
+import { UrlBackendContext } from './urlBackendContext'
 
 export const UserContext = createContext()
 
 export const UserProvider = ({ children }) => {
     
+    const {url} = useContext(UrlBackendContext)  
     const [user, setUser] = useState()
     const [error, setError] = useState(false)
 
 
     const getUser = async () => {
-        try {
-          let response = await axios.get(`${process.env.REACT_APP_BACKEND_HOST}/users`)
-          if (response.status === 200)
-            setUser(response.data)
-        } catch (error) {
-          console.log(error)
-          setError(true)
-        }
+    try {
+      if (!url) return // Espera hasta que url esté disponible
+      
+      let response = await axios.get(`${url}/users`)
+      if (response.status === 200) {
+        setUser(response.data)
       }
+    } catch (error) {
+      console.log(error)
+      setError(true)
+    }
+  }
 
-    useEffect( () => {
-        async function fetchData() {
-            await getUser()
-        }
-        fetchData()
-    },[] )
+  useEffect(() => {  
+    if (url) { // Solo ejecuta cuando url esté disponible
+      getUser()
+    }
+  }, [url])
 
     if (error){
        return <Page404 />
